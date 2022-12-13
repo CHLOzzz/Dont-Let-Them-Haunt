@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Boring_Nodes/Developer_Splash/Assets/Logo.png" type="Texture" id=1]
+[ext_resource path="res://Boring_Nodes/Developer_Splash/Developer_Splash.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Animate Logo"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Logo:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Logo:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -101, -0.25, 0, 1, 1834.41, 300, -3.1, 211.903, 0.9, 161.089 ),
+"times": PoolRealArray( 0, 3.5 )
+}
+
+[node name="Developer_Splash" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+"anims/Animate Logo" = SubResource( 1 )
+
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 512, -101 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 1 )
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_Animation_animation_finished"]
