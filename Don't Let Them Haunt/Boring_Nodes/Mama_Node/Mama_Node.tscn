@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Boring_Nodes/Mama_Node/Mama_Node.gd" type="Script" id=1]
+
+[node name="Mama_Node" type="Node"]
+script = ExtResource( 1 )
+
+[connection signal="child_entered_tree" from="." to="." method="_on_Mama_Node_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_Mama_Node_child_exiting_tree"]
