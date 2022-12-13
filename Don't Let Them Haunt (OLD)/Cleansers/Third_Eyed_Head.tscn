@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Cleansers/Assets/Third_Eyed_Head.png" type="Texture" id=1]
+[ext_resource path="res://Cleansers/Third_Eyed_Head.gd" type="Script" id=2]
+[ext_resource path="res://Cleansers/Assets/Visual_Detection.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 160.003
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 66.1211
+
+[node name="Third_Eyed_Head" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 7, 7 )
+texture = ExtResource( 1 )
+
+[node name="Detection" type="Area2D" parent="."]
+
+[node name="Detection_Collision" type="CollisionShape2D" parent="Detection"]
+shape = SubResource( 1 )
+
+[node name="Visual_Detection" type="Sprite" parent="Detection"]
+modulate = Color( 1, 1, 1, 0.180392 )
+scale = Vector2( 0.415, 0.415 )
+texture = ExtResource( 3 )
+
+[node name="Footprint" type="Area2D" parent="." groups=["No_Build"]]
+
+[node name="Footprint_Collision" type="CollisionShape2D" parent="Footprint"]
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Detection" to="." method="_on_Detection_area_entered"]
+[connection signal="area_exited" from="Detection" to="." method="_on_Detection_area_exited"]
+[connection signal="area_entered" from="Footprint" to="." method="_on_Footprint_area_entered"]
+[connection signal="area_exited" from="Footprint" to="." method="_on_Footprint_area_exited"]
